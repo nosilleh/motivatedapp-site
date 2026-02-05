@@ -157,7 +157,7 @@
      </div>
     </div><!-- Main Content -->
     <div class="text-center max-w-2xl relative z-10">
-     <h1 id="app-name-display" class="text-4xl md:text-5xl font-bold mb-4" style="color: #D2691E;">Meu App</h1>
+     <h1 id="app-name-display" class="text-4xl md:text-5xl font-bold mb-4" style="color: #D2691E;">Alarme Motivacional</h1>
      <p id="tagline-display" class="text-2xl md:text-3xl font-semibold mb-6" style="color: #FF8C00;">Um alarme que motiva você a acordar inspirado</p>
      <p id="description-display" class="text-lg mb-10 leading-relaxed" style="color: #8B4513;">Simplifique sua vida com nosso aplicativo intuitivo e poderoso. Desenvolvido para você acordar disposto.</p><!-- CTA Button --> <button id="cta-button" class="btn-day px-10 py-4 rounded-full font-bold text-white text-lg"> <span class="flex items-center justify-center gap-3">
        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -175,14 +175,9 @@
      <h2 class="text-4xl font-bold text-center mb-12" style="color: #D2691E;">Veja o app em ação</h2><!-- Video Section -->
      <div class="mb-12 flex justify-center"><!-- Video Container -->
       <div class="w-full md:w-2/5">
-       <div class="relative w-full aspect-video rounded-3xl card-day flex items-center justify-center shadow-xl overflow-hidden" id="video-card" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 218, 185, 0.3));">
-        <div id="video-container" class="w-full h-full relative"><!-- Placeholder para vídeo -->
-         <div class="w-full h-full flex items-center justify-center flex-col gap-4">
-          <svg class="w-20 h-20" fill="none" stroke="currentColor" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <p class="font-bold" style="color: #FF8C00;">Seu vídeo aqui</p>
-          <p class="text-sm" style="color: #8B4513;">Cole o link do vídeo</p>
-         </div>
+       <div class="relative w-full aspect-video rounded-3xl card-day flex items-center justify-center shadow-xl overflow-hidden" id="video-card">
+        <div id="video-container" class="w-full h-full relative">
+         <iframe class="w-full h-full" src="https://www.youtube.com/embed/8IBJ-mxFhZg" title="Vídeo do Alarme Motivacional" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
        </div>
       </div>
@@ -192,12 +187,8 @@
        <div class="carousel-track flex gap-6 justify-center overflow-x-auto pb-4 scroll-smooth" id="carousel-track"><!-- Screenshot 1 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 1</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen1.jpeg" alt="Tela 1 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 1 - Bem-vindo</h3>
@@ -207,12 +198,8 @@
         </div><!-- Screenshot 2 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 2</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen2.jpeg" alt="Tela 2 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 2 - Dashboard</h3>
@@ -222,12 +209,8 @@
         </div><!-- Screenshot 3 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 3</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen3.jpeg" alt="Tela 3 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 3 - Perfil</h3>
@@ -237,12 +220,8 @@
         </div><!-- Screenshot 4 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 4</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen4.jpeg" alt="Tela 4 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 4 - Notificações</h3>
@@ -252,12 +231,8 @@
         </div><!-- Screenshot 5 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 5</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen5.jpeg" alt="Tela 5 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 5 - Histórico</h3>
@@ -267,12 +242,8 @@
         </div><!-- Screenshot 6 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 6</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen6.jpeg" alt="Tela 6 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 6 - Configurações</h3>
@@ -282,12 +253,8 @@
         </div><!-- Screenshot 7 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 7</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen7.jpeg" alt="Tela 7 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 7 - Ajuda</h3>
@@ -297,12 +264,8 @@
         </div><!-- Screenshot 8 -->
         <div class="carousel-item flex-shrink-0 w-80">
          <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 8</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen8.jpeg" alt="Tela 8 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 8 - Premium</h3>
@@ -320,12 +283,8 @@
        <div class="carousel-track-mobile flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" id="carousel-track-mobile"><!-- Screenshot 1 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 1</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen1.jpeg" alt="Tela 1 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 1 - Bem-vindo</h3>
@@ -335,12 +294,8 @@
         </div><!-- Screenshot 2 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 2</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen2.jpeg" alt="Tela 2 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 2 - Dashboard</h3>
@@ -350,12 +305,8 @@
         </div><!-- Screenshot 3 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 3</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen3.jpeg" alt="Tela 3 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 3 - Perfil</h3>
@@ -365,12 +316,8 @@
         </div><!-- Screenshot 4 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 4</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen4.jpeg" alt="Tela 4 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 4 - Notificações</h3>
@@ -380,12 +327,8 @@
         </div><!-- Screenshot 5 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 5</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen5.jpeg" alt="Tela 5 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 5 - Histórico</h3>
@@ -395,12 +338,8 @@
         </div><!-- Screenshot 6 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 6</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen6.jpeg" alt="Tela 6 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 6 - Configurações</h3>
@@ -410,12 +349,8 @@
         </div><!-- Screenshot 7 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 7</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen7.jpeg" alt="Tela 7 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 7 - Ajuda</h3>
@@ -425,12 +360,8 @@
         </div><!-- Screenshot 8 -->
         <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
          <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
-          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
-           <div class="flex flex-col items-center gap-2">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
-            </svg>
-            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 8</p>
-           </div>
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] shadow-lg">
+           <img src="assets/screen8.jpeg" alt="Tela 8 do aplicativo" class="h-full w-full object-cover">
           </div>
           <div>
            <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 8 - Premium</h3>
@@ -446,7 +377,7 @@
    </section><!-- Footer -->
    <footer class="px-6 py-8 border-t-4" style="border-color: rgba(255, 107, 107, 0.2);">
     <div class="max-w-4xl mx-auto text-center">
-     <p class="font-semibold" style="color: #8B4513;">© 2024 Meu App. Acorda disposto! ☀️</p>
+     <p class="font-semibold" style="color: #8B4513;">© 2024 Alarme Motivacional. Acorda disposto! ☀️</p>
     </div>
    </footer>
   </div>
@@ -532,12 +463,29 @@
     const prevBtn = document.getElementById('carousel-prev-2');
     const nextBtn = document.getElementById('carousel-next-2');
     
-    const itemWidth = 340; // 320px (w-80) + 20px gap
-    const visibleItems = window.innerWidth > 768 ? 2 : 1;
-    const maxIndex = carouselItems.length - visibleItems;
+    let itemWidth = 0;
+    let visibleItems = 1;
+    let maxIndex = 0;
 
     function updateCarousel() {
-      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      carousel.scrollTo({
+        left: currentIndex * itemWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function updateCarouselMetrics() {
+      if (!carousel || carouselItems.length === 0) {
+        return;
+      }
+
+      const styles = window.getComputedStyle(carousel);
+      const gap = parseFloat(styles.columnGap || styles.gap || 0);
+      itemWidth = carouselItems[0].getBoundingClientRect().width + gap;
+      visibleItems = window.innerWidth > 768 ? 2 : 1;
+      maxIndex = Math.max(0, carouselItems.length - visibleItems);
+      currentIndex = Math.min(currentIndex, maxIndex);
+      carousel.scrollLeft = currentIndex * itemWidth;
     }
 
     prevBtn.addEventListener('click', () => {
@@ -549,6 +497,9 @@
       currentIndex = Math.min(maxIndex, currentIndex + 1);
       updateCarousel();
     });
+
+    window.addEventListener('resize', updateCarouselMetrics);
+    updateCarouselMetrics();
 
     const defaultConfig = {
       app_name: 'Alarme Motivacional',
