@@ -468,7 +468,24 @@
     let maxIndex = 0;
 
     function updateCarousel() {
-      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+      carousel.scrollTo({
+        left: currentIndex * itemWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function updateCarouselMetrics() {
+      if (!carousel || carouselItems.length === 0) {
+        return;
+      }
+
+      const styles = window.getComputedStyle(carousel);
+      const gap = parseFloat(styles.columnGap || styles.gap || 0);
+      itemWidth = carouselItems[0].getBoundingClientRect().width + gap;
+      visibleItems = window.innerWidth > 768 ? 2 : 1;
+      maxIndex = Math.max(0, carouselItems.length - visibleItems);
+      currentIndex = Math.min(currentIndex, maxIndex);
+      carousel.scrollLeft = currentIndex * itemWidth;
     }
 
     function updateCarouselMetrics() {
