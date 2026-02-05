@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Landing Page - Tema Vivo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Fredoka', sans-serif;
+    }
+    
+    /* Day Theme */
+    .day-mode {
+      background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #FFD580 100%);
+      color: #1a1a1a;
+    }
+    
+    /* Night Theme */
+    .night-mode {
+      background: linear-gradient(180deg, #0a0e27 0%, #1a1a3e 50%, #2d1b4e 100%);
+      color: #ffffff;
+    }
+    
+    .card-day {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    
+    .card-night {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(75, 0, 130, 0.2));
+      border: 2px solid rgba(138, 43, 226, 0.4);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-day {
+      background: linear-gradient(135deg, #FF6B6B, #FFA500);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-night {
+      background: linear-gradient(135deg, #9D4EDD, #3A86FF);
+      box-shadow: 0 8px 25px rgba(157, 78, 221, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-day:hover, .btn-night:hover {
+      transform: translateY(-3px);
+    }
+    
+    .icon-day {
+      background: linear-gradient(135deg, #FF6B6B, #FFB347);
+    }
+    
+    .icon-night {
+      background: linear-gradient(135deg, #9D4EDD, #3A86FF);
+    }
+    
+    @keyframes sunrise {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes bounce-soft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes sun-rise {
+      0% { transform: translateY(100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes moon-rise {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-sunrise {
+      animation: sunrise 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .animate-bounce-soft {
+      animation: bounce-soft 3s ease-in-out infinite;
+    }
+    
+    .animate-sun-rise {
+      animation: sun-rise 1s ease-out;
+    }
+    
+    .animate-moon-rise {
+      animation: moon-rise 1s ease-out;
+    }
+    
+    .sun-glow {
+      filter: drop-shadow(0 0 40px rgba(255, 165, 0, 0.6));
+    }
+    
+    .moon-glow {
+      filter: drop-shadow(0 0 40px rgba(138, 43, 226, 0.6));
+    }
+    
+    .stars {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 3s infinite;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    
+    .alarm-icon-pulse {
+      animation: pulse-alarm 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-alarm {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-container" class="h-full overflow-auto day-mode"><!-- Theme Toggle Button -->
+   <div class="fixed top-6 right-6 z-20"><button id="theme-toggle" class="w-14 h-14 rounded-full btn-day text-white flex items-center justify-center font-bold shadow-lg hover:shadow-xl transition-all">
+     <svg id="theme-icon-sun" class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707M12 6a6 6 0 100 12 6 6 0 000-12zm0 2a4 4 0 110 8 4 4 0 010-8z" />
+     </svg>
+     <svg id="theme-icon-moon" class="w-7 h-7 hidden" fill="currentColor" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+     </svg></button>
+   </div><!-- Hero Section -->
+   <section class="min-h-full flex flex-col items-center justify-center px-6 py-16 relative overflow-hidden"><!-- Day: Sun Decoration -->
+    <div id="sun-decoration" class="absolute top-10 right-20 w-40 h-40 rounded-full animate-bounce-soft sun-glow" style="background: radial-gradient(circle, rgba(255, 165, 0, 0.5), transparent); filter: blur(20px);"></div><!-- Night: Moon and Stars -->
+    <div id="moon-decoration" class="absolute top-10 right-20 w-40 h-40 rounded-full animate-bounce-soft moon-glow hidden" style="background: radial-gradient(circle, rgba(138, 43, 226, 0.5), transparent); filter: blur(20px);"></div><!-- Stars (visible only at night) -->
+    <div id="stars-container" class="absolute inset-0 hidden">
+     <div class="stars" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+     <div class="stars" style="top: 20%; left: 80%; animation-delay: 1s;"></div>
+     <div class="stars" style="top: 35%; left: 25%; animation-delay: 2s;"></div>
+     <div class="stars" style="top: 50%; left: 85%; animation-delay: 0.5s;"></div>
+     <div class="stars" style="top: 60%; left: 20%; animation-delay: 1.5s;"></div>
+    </div><!-- App Icon (Alarm Clock) -->
+    <div class="animate-sunrise mb-8 alarm-icon-pulse">
+     <div id="app-icon-bg" class="w-32 h-32 rounded-3xl icon-day flex items-center justify-center shadow-2xl">
+      <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+     </div>
+    </div><!-- Main Content -->
+    <div class="text-center max-w-2xl relative z-10">
+     <h1 id="app-name-display" class="text-4xl md:text-5xl font-bold mb-4" style="color: #D2691E;">Meu App</h1>
+     <p id="tagline-display" class="text-2xl md:text-3xl font-semibold mb-6" style="color: #FF8C00;">Um alarme que motiva você a acordar inspirado</p>
+     <p id="description-display" class="text-lg mb-10 leading-relaxed" style="color: #8B4513;">Simplifique sua vida com nosso aplicativo intuitivo e poderoso. Desenvolvido para você acordar disposto.</p><!-- CTA Button --> <button id="cta-button" class="btn-day px-10 py-4 rounded-full font-bold text-white text-lg"> <span class="flex items-center justify-center gap-3">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+       </svg><span id="cta-text-display">Baixar Agora</span> </span> </button> <!-- Store Badge -->
+     <div class="flex justify-center mt-8">
+      <div class="flex items-center gap-2 px-6 py-3 rounded-full card-day">
+       <svg class="w-6 h-6" fill="currentColor" style="color: #FF6B6B;" viewbox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+       </svg><span class="font-semibold" style="color: #FF6B6B;">Google Play</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Screenshots Section -->
+   <section class="px-6 py-16 relative">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-4xl font-bold text-center mb-12" style="color: #D2691E;">Veja o app em ação</h2><!-- Video Section -->
+     <div class="mb-12 flex justify-center"><!-- Video Container -->
+      <div class="w-full md:w-2/5">
+       <div class="relative w-full aspect-video rounded-3xl card-day flex items-center justify-center shadow-xl overflow-hidden" id="video-card" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 218, 185, 0.3));">
+        <div id="video-container" class="w-full h-full relative"><!-- Placeholder para vídeo -->
+         <div class="w-full h-full flex items-center justify-center flex-col gap-4">
+          <svg class="w-20 h-20" fill="none" stroke="currentColor" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="font-bold" style="color: #FF8C00;">Seu vídeo aqui</p>
+          <p class="text-sm" style="color: #8B4513;">Cole o link do vídeo</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Screenshots Carousel with Descriptions -->
+     <div class="relative mx-auto max-w-6xl"><!-- Desktop Carousel -->
+      <div class="hidden md:block">
+       <div class="carousel-track flex gap-6 justify-center overflow-x-auto pb-4 scroll-smooth" id="carousel-track"><!-- Screenshot 1 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 1</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 1 - Bem-vindo</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Descrição detalhada da primeira tela do seu app. Explique aqui para que serve, quais são as funcionalidades principais e como o usuário deve interagir com ela. Deixe claro o propósito e os benefícios.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 2 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 2</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 2 - Dashboard</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Descreva a segunda tela em detalhes. Apresente as informações exibidas, os gráficos, estatísticas e como o usuário pode visualizar seus dados. Explique como navegar pelos diferentes elementos.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 3 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 3</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 3 - Perfil</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Terceira tela com todas as informações de perfil. Descreva as opções disponíveis, como editar dados, preferências do usuário e configurações importantes. Deixe claro quais ações podem ser realizadas.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 4 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 4</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 4 - Notificações</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">A quarta tela exibe todas as notificações do usuário. Explique como o app mantém o usuário informado, quais tipos de notificações são enviadas e como gerenciar preferências de alertas.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 5 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 5</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 5 - Histórico</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Quinta tela que mostra o histórico completo das ações do usuário. Descreva como acessar dados anteriores, filtrar informações e analisar tendências ao longo do tempo.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 6 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 6</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 6 - Configurações</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Sexta tela com todas as opções de configuração do app. Descreva as preferências disponíveis, temas, idiomas, segurança e outras personalizações que o usuário pode ajustar.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 7 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 7</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 7 - Ajuda</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Sétima tela de suporte e ajuda para usuários. Explique como acessar tutoriais, FAQs, documentação e como entrar em contato com o suporte em caso de dúvidas ou problemas.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 8 -->
+        <div class="carousel-item flex-shrink-0 w-80">
+         <div class="card-day rounded-2xl p-6 flex flex-col gap-4 hover:shadow-lg transition-all h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-sm font-semibold" style="color: #FF8C00;">Tela 8</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-lg mb-2" style="color: #FF8C00;">Tela 8 - Premium</h3>
+           <p class="text-sm leading-relaxed" style="color: #8B4513;">Oitava tela apresentando os planos premium e recursos exclusivos. Descreva os benefícios de cada plano, vantagens de atualizar e como gerenciar sua assinatura de forma fácil e segura.</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Navigation Buttons for Desktop --> <button id="carousel-prev-2" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 w-14 h-14 rounded-full btn-day text-white flex items-center justify-center z-10 font-bold carousel-btn hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" />
+        </svg></button> <button id="carousel-next-2" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 w-14 h-14 rounded-full btn-day text-white flex items-center justify-center z-10 font-bold carousel-btn hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+        </svg></button>
+      </div><!-- Mobile Carousel -->
+      <div class="md:hidden">
+       <div class="carousel-track-mobile flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" id="carousel-track-mobile"><!-- Screenshot 1 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 1</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 1 - Bem-vindo</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Descrição detalhada da primeira tela do seu app.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 2 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 2</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 2 - Dashboard</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Descreva a segunda tela em detalhes.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 3 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 3</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 3 - Perfil</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Terceira tela com todas as informações.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 4 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 4</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 4 - Notificações</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">A quarta tela exibe notificações.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 5 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 5</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 5 - Histórico</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Quinta tela com o histórico.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 6 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 6</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 6 - Configurações</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Opções de configuração do app.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 7 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 7</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 7 - Ajuda</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Suporte e ajuda para usuários.</p>
+          </div>
+         </div>
+        </div><!-- Screenshot 8 -->
+        <div class="carousel-item-mobile flex-shrink-0 w-72 snap-center">
+         <div class="card-day rounded-2xl p-4 flex flex-col gap-3 h-full">
+          <div class="relative overflow-hidden rounded-2xl aspect-[9/16] flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));">
+           <div class="flex flex-col items-center gap-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" style="color: #FFB347;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m6.364 1.636l-.707.707M21 12h-1m1.364 6.364l-.707-.707M12 21v1m-6.364-1.636l.707-.707M3 12h1M3.636 5.636l.707.707" />
+            </svg>
+            <p class="text-xs font-semibold" style="color: #FF8C00;">Tela 8</p>
+           </div>
+          </div>
+          <div>
+           <h3 class="font-bold text-base mb-1" style="color: #FF8C00;">Tela 8 - Premium</h3>
+           <p class="text-xs leading-relaxed" style="color: #8B4513;">Planos premium exclusivos.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <p class="text-center text-xs mt-3" style="color: #8B4513;">← Deslize para ver mais →</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="px-6 py-8 border-t-4" style="border-color: rgba(255, 107, 107, 0.2);">
+    <div class="max-w-4xl mx-auto text-center">
+     <p class="font-semibold" style="color: #8B4513;">© 2024 Meu App. Acorda disposto! ☀️</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Theme Toggle Functionality
+    const appContainer = document.getElementById('app-container');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIconSun = document.getElementById('theme-icon-sun');
+    const themeIconMoon = document.getElementById('theme-icon-moon');
+    const sunDecoration = document.getElementById('sun-decoration');
+    const moonDecoration = document.getElementById('moon-decoration');
+    const starsContainer = document.getElementById('stars-container');
+    
+    let isDarkMode = false;
+
+    function updateTheme() {
+      if (isDarkMode) {
+        // Night Mode
+        appContainer.classList.remove('day-mode');
+        appContainer.classList.add('night-mode');
+        themeIconSun.classList.add('hidden');
+        themeIconMoon.classList.remove('hidden');
+        sunDecoration.classList.add('hidden');
+        moonDecoration.classList.remove('hidden');
+        starsContainer.classList.remove('hidden');
+        themeToggle.classList.remove('btn-day');
+        themeToggle.classList.add('btn-night');
+        
+        // Update all card and button classes
+        document.querySelectorAll('.card-day').forEach(el => {
+          el.classList.remove('card-day');
+          el.classList.add('card-night');
+        });
+        
+        document.querySelectorAll('.icon-day').forEach(el => {
+          el.classList.remove('icon-day');
+          el.classList.add('icon-night');
+        });
+        
+        document.querySelectorAll('.btn-day').forEach(el => {
+          el.classList.remove('btn-day');
+          el.classList.add('btn-night');
+        });
+      } else {
+        // Day Mode
+        appContainer.classList.remove('night-mode');
+        appContainer.classList.add('day-mode');
+        themeIconSun.classList.remove('hidden');
+        themeIconMoon.classList.add('hidden');
+        sunDecoration.classList.remove('hidden');
+        moonDecoration.classList.add('hidden');
+        starsContainer.classList.add('hidden');
+        themeToggle.classList.remove('btn-night');
+        themeToggle.classList.add('btn-day');
+        
+        // Update all card and button classes
+        document.querySelectorAll('.card-night').forEach(el => {
+          el.classList.remove('card-night');
+          el.classList.add('card-day');
+        });
+        
+        document.querySelectorAll('.icon-night').forEach(el => {
+          el.classList.remove('icon-night');
+          el.classList.add('icon-day');
+        });
+        
+        document.querySelectorAll('.btn-night').forEach(el => {
+          el.classList.remove('btn-night');
+          el.classList.add('btn-day');
+        });
+      }
+    }
+
+    themeToggle.addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      updateTheme();
+    });
+
+    // Carousel Functionality
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel-track');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('carousel-prev-2');
+    const nextBtn = document.getElementById('carousel-next-2');
+    
+    const itemWidth = 340; // 320px (w-80) + 20px gap
+    const visibleItems = window.innerWidth > 768 ? 2 : 1;
+    const maxIndex = carouselItems.length - visibleItems;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = Math.min(maxIndex, currentIndex + 1);
+      updateCarousel();
+    });
+
+    const defaultConfig = {
+      app_name: 'Alarme Motivacional',
+      tagline: 'Acorda com energia!',
+      description: 'Simplifique sua vida com nosso aplicativo intuitivo e poderoso. Desenvolvido para você acordar disposto.',
+      feature_1: 'Rápido e Eficiente',
+      feature_2: 'Seguro e Privado',
+      feature_3: 'Fácil de Usar',
+      cta_text: 'Baixar Agora',
+      primary_color: '#FF6B6B',
+      secondary_color: '#FFA500',
+      text_main: '#D2691E',
+      text_secondary: '#FF8C00',
+      text_light: '#8B4513',
+      font_family: 'Fredoka',
+      font_size: 16
+    };
+
+    let currentConfig = { ...defaultConfig };
+
+    async function onConfigChange(config) {
+      currentConfig = { ...defaultConfig, ...config };
+      
+      document.getElementById('app-name-display').textContent = currentConfig.app_name;
+      document.getElementById('tagline-display').textContent = currentConfig.tagline;
+      document.getElementById('description-display').textContent = currentConfig.description;
+      document.getElementById('cta-text-display').textContent = currentConfig.cta_text;
+
+      const gradient = `linear-gradient(135deg, ${currentConfig.primary_color}, ${currentConfig.secondary_color})`;
+      
+      document.getElementById('app-icon-bg').style.background = gradient;
+      document.getElementById('cta-button').style.background = gradient;
+      
+      const iconElements = document.querySelectorAll('.icon-day, .icon-night');
+      iconElements.forEach(el => el.style.background = gradient);
+
+      document.getElementById('app-name-display').style.color = currentConfig.text_main;
+      document.getElementById('tagline-display').style.color = currentConfig.text_secondary;
+      document.getElementById('description-display').style.color = currentConfig.text_light;
+
+      document.body.style.fontFamily = `${currentConfig.font_family}, sans-serif`;
+      document.body.style.fontSize = `${currentConfig.font_size}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => currentConfig.primary_color,
+            set: (value) => {
+              currentConfig.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => currentConfig.secondary_color,
+            set: (value) => {
+              currentConfig.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => currentConfig.text_main,
+            set: (value) => {
+              currentConfig.text_main = value;
+              window.elementSdk.setConfig({ text_main: value });
+            }
+          },
+          {
+            get: () => currentConfig.text_secondary,
+            set: (value) => {
+              currentConfig.text_secondary = value;
+              window.elementSdk.setConfig({ text_secondary: value });
+            }
+          },
+          {
+            get: () => currentConfig.text_light,
+            set: (value) => {
+              currentConfig.text_light = value;
+              window.elementSdk.setConfig({ text_light: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => currentConfig.font_family,
+          set: (value) => {
+            currentConfig.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => currentConfig.font_size,
+          set: (value) => {
+            currentConfig.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['app_name', currentConfig.app_name],
+        ['tagline', currentConfig.tagline],
+        ['description', currentConfig.description],
+        ['cta_text', currentConfig.cta_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8e6196404dd97a',t:'MTc3MDI1MjI4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
