@@ -1,55 +1,137 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+  <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <title>Política de Privacidade — Alarme Motivacional</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Política de Privacidade | Alarme Motivacional</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --border: #e5e7eb;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+        color: var(--text);
+        line-height: 1.7;
+        padding: 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      }
+      h1 {
+        font-size: 26px;
+        margin: 0 0 6px;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .summary {
+        background: #f9fafb;
+        border: 1px solid var(--border);
+        padding: 16px;
+        border-radius: 12px;
+        margin: 16px 0 24px;
+      }
+      .summary ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      h2 {
+        margin-top: 22px;
+        font-size: 17px;
+        color: var(--accent);
+      }
+      p { margin: 10px 0; }
+      ul { padding-left: 18px; }
+      a { color: var(--accent); }
+      .footer {
+        margin-top: 24px;
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        body { padding: 12px; }
+        .container { padding: 18px; border-radius: 12px; }
+        h1 { font-size: 22px; }
+      }
+    </style>
   </head>
-  <body class="bg-slate-50 text-slate-900">
-    <main class="max-w-3xl mx-auto px-6 py-12">
-      <a href="/" class="text-indigo-600 hover:underline">← Voltar para a página inicial</a>
-      <h1 class="text-3xl font-bold mt-6 mb-4">Política de Privacidade</h1>
-      <p class="mb-4 text-sm text-slate-600">Última atualização: 21/02/2026</p>
+  <body>
+    <div class="container">
+      <h1>Política de Privacidade — Alarme Motivacional</h1>
+      <div class="subtitle">Última atualização: 17/02/2026</div>
 
-      <p class="mb-4">
-        Esta Política de Privacidade descreve como o aplicativo <strong>Alarme Motivacional</strong>
-        coleta, utiliza e protege informações dos usuários.
-      </p>
+      <div class="summary">
+        <strong>Resumo rápido</strong>
+        <ul>
+          <li>Não coletamos nome, e‑mail ou telefone.</li>
+          <li>O app pode exibir anúncios via Google AdMob.</li>
+          <li>Pagamentos passam pelo Google Play Billing.</li>
+          <li>Downloads são processados por serviços de terceiros quando você solicita.</li>
+          <li>Os vídeos baixados ficam no seu dispositivo.</li>
+        </ul>
+      </div>
 
-      <h2 class="text-xl font-semibold mt-8 mb-3">1. Informações coletadas</h2>
-      <p class="mb-4">
-        Podemos coletar informações técnicas para funcionamento do aplicativo, como dados de
-        dispositivo, métricas de uso e identificadores necessários para serviços de análise e anúncios.
-      </p>
+      <h2>1) Coleta de informações</h2>
+      <p>O aplicativo não coleta dados pessoais identificáveis como nome, e‑mail ou telefone.</p>
+      <p>Podemos tratar dados técnicos de forma limitada (por exemplo, identificadores do dispositivo usados por anúncios e informações necessárias para processar pagamentos).</p>
 
-      <h2 class="text-xl font-semibold mt-8 mb-3">2. Uso das informações</h2>
-      <p class="mb-4">
-        As informações são utilizadas para melhorar a experiência do usuário, corrigir problemas,
-        oferecer funcionalidades do app e manter a segurança do serviço.
-      </p>
+      <h2>2) Downloads e armazenamento</h2>
+      <p>Quando você solicita um download, o app envia o link para um serviço externo que gera a mídia.</p>
+      <p>O conteúdo é salvo localmente no seu dispositivo e pode ser apagado pelo usuário a qualquer momento.</p>
 
-      <h2 class="text-xl font-semibold mt-8 mb-3">3. Compartilhamento</h2>
-      <p class="mb-4">
-        Não vendemos dados pessoais. Pode haver compartilhamento com provedores essenciais
-        para operação do app, conforme necessário e dentro dos limites legais.
-      </p>
+      <h2>3) Serviços de terceiros</h2>
+      <p>O app usa serviços externos para operar algumas funções:</p>
+      <ul>
+        <li>Google AdMob (anúncios)</li>
+        <li>Google Play Billing (assinaturas/doações)</li>
+        <li>SaverAPI (processamento do link para download)</li>
+      </ul>
 
-      <h2 class="text-xl font-semibold mt-8 mb-3">4. Segurança</h2>
-      <p class="mb-4">
-        Adotamos medidas técnicas e organizacionais para proteger as informações contra acesso
-        não autorizado, alteração, divulgação ou destruição.
-      </p>
+      <h2>4) Anúncios</h2>
+      <p>Os anúncios podem coletar dados não pessoais, como identificadores do dispositivo e métricas de uso.</p>
 
-      <h2 class="text-xl font-semibold mt-8 mb-3">5. Contato</h2>
-      <p class="mb-8">
-        Em caso de dúvidas sobre esta política, entre em contato com a equipe do Alarme Motivacional.
-      </p>
+      <h2>5) Permissões</h2>
+      <p>Algumas permissões são necessárias para o funcionamento correto do alarme:</p>
+      <ul>
+        <li>Notificações: alertar no horário programado.</li>
+        <li>Alarme exato / tela cheia: garantir o disparo correto.</li>
+        <li>Otimização de bateria: evitar que o sistema interrompa o alarme.</li>
+      </ul>
 
-      <p class="text-xs text-slate-500">
-        Observação: substitua este texto pelo conteúdo oficial de política já existente no seu
-        repositório de política de privacidade, se necessário.
-      </p>
-    </main>
+      <h2>6) Crianças</h2>
+      <p>O app pode ser usado por menores de 13 anos. Não coletamos dados pessoais intencionalmente.</p>
+
+      <h2>7) Responsabilidade do usuário</h2>
+      <p>O usuário é responsável pelo conteúdo que decide baixar e por cumprir as regras das plataformas e direitos autorais.</p>
+
+      <h2>8) Segurança</h2>
+      <p>Adotamos medidas razoáveis para proteger as informações utilizadas pelo aplicativo.</p>
+
+      <h2>9) Alterações</h2>
+      <p>Esta política pode ser atualizada periodicamente.</p>
+
+      <h2>10) Contato</h2>
+      <p>Dúvidas: <strong>hvsuportt@gmail.com</strong></p>
+
+      <div class="footer">© 2026 Alarme Motivacional</div>
+    </div>
   </body>
-</html>
+  </html>
